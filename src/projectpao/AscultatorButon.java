@@ -9,17 +9,17 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import library.LogCommand;
+import library.model.PanouPrincipal;
+import library.model.User;
 
 public class AscultatorButon implements ActionListener
 {
@@ -40,20 +40,21 @@ public class AscultatorButon implements ActionListener
     {
         //JFrame frame = new JFrame("Platforma concedii");
         //Connection conn = new DBconnection().connect();
-        String sql = "select * from USERS where USERNAME='" + this.nume.getText() + "' and PASSWORD='" + this.pass.getText() +"'";
+//        String sql = "select * from USERS where USERNAME='" + this.nume.getText() + "' and PASSWORD='" + this.pass.getText() +"'";
         System.out.print(this.nume.getText()+" "+this.pass.getText());
         try
         {
-            //Statement statement = conn.createStatement();
-            Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
-            ResultSet rs = st.executeQuery(sql);
             
+            ConnectionController cc = ConnectionController.getInstance();
+            cc.getOut().writeObject(new LogCommand(this.nume.getText(), this.pass.getText()));
             
-            if( rs.next() )
+            User user = (User) cc.getIn().readObject();
+            
+            if( user != null )
             {
                 System.out.print("a intrat aici!");
-                JOptionPane.showMessageDialog(null,"Felicitari : "+this.nume.getText()+", ai reusit sa te loghezi!");
-                JFrame panou = new JFrame("Panou principal");
+                JOptionPane.showMessageDialog(null,"Felicitari : "+user.username+", ai reusit sa te loghezi!");
+                PanouPrincipal panou = new PanouPrincipal(user);
                 panou.setVisible(true);
                 login.dispose();
             }
@@ -62,7 +63,7 @@ public class AscultatorButon implements ActionListener
                 JOptionPane.showMessageDialog(null,"Username & pass invalid!");
             }
         }
-        catch(SQLException | HeadlessException e)
+        catch(IOException | ClassNotFoundException e)
         {
             System.out.print("EXCEPTIE"+e);
         }

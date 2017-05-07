@@ -9,6 +9,10 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,75 +22,33 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import library.LogCommand;
+import library.TestCommand;
+import library.model.User;
 
 /**
  *
  * @author Bogdan-Andrei
  */
-public class ProjectPAO 
-{
-    
-    public static void main(String[] args) throws SQLException 
-    {
-        GridBagConstraints constraints;
-        JFrame frame = new JFrame("Platforma concedii");
-        frame.setBounds(450,200,300,350); // x=100, y=100, fata de coltul ferestrei, 200-latime, 250-inaltime
-        frame.setMinimumSize(new Dimension(300, 200)); //dimensiunea minima acceptata
-        frame.setLayout(new GridBagLayout() );
-        JTextField username = new JTextField(); //creez textfield ul
-        JPasswordField password = new JPasswordField();
-        //password.setColumns(12);
+public class ProjectPAO {
+
+    public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
         
-        JLabel user = new JLabel("Username: ",SwingConstants.RIGHT); 
-        constraints = new GridBagConstraints();
-        constraints.gridx = 1; // pe coloana 
-        constraints.gridy = 1; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH; 
-        constraints.ipadx = 40;
-        constraints.ipadx = 40; //il incadrez intr un patrat
-        frame.add(user,constraints); //adaug componenta
-        //configurez textfiled user
-        constraints = new GridBagConstraints();
-        constraints.gridx = 2; // pe coloana 
-        constraints.gridy = 1; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH; 
-        constraints.insets = new Insets(5,0,0,50);
-        constraints.weightx = 0.5; //ocupa tot, 100%
-        frame.add(username,constraints);
-       
-        //configurez Parola
-        JLabel parola = new JLabel("Parola: ",SwingConstants.RIGHT);
-        constraints = new GridBagConstraints();
-        constraints.gridx = 1; // pe coloana 1
-        constraints.gridy = 2; //pe linia 0
-        constraints.fill = GridBagConstraints.BOTH; 
-        frame.add(parola,constraints); 
-        //configurez textfiled parola
-        constraints = new GridBagConstraints();
-        constraints.gridx = 2; // pe coloana 
-        constraints.gridy = 2; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH; 
-        constraints.insets = new Insets(5,0,0,50);
-        frame.add(password,constraints);
+        ConnectionController.getInstance().connect("localhost", 4321);
         
-        JButton buton = new JButton("Login"); 
-        constraints = new GridBagConstraints();
-        constraints.gridx = 1; // pe coloana 
-        constraints.gridy = 3; //pe linia 
-        constraints.gridwidth = 2;
-        constraints.gridheight = 2;
-        constraints.ipadx = 40;  //dimensiune
-        constraints.ipady = 20;  //dimensiune
-        constraints.insets = new Insets(40,0,0,0);  //top padding
-        frame.add(buton,constraints); 
+        Login frame = new Login();
+        Socket s = new Socket("localhost",4321);
+        s.getInputStream();
+        s.getOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
+        ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
+        LogCommand logc = new LogCommand("dfdssfd","sdfafd");
+        oos.writeObject(logc);
+        User nume = (User)ois.readObject();
+        System.out.print(nume);
         
-        DBcontroller.getI();
-        
-        buton.addActionListener(new AscultatorButon(username,password,buton,frame) );
         //buton.addActionListener(new AscultatorButon(username.getText());
-        
         frame.setVisible(true); //ca sa fie vizibila fereastra 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
     }
-    
+
 }
