@@ -38,14 +38,12 @@ public class AscultatorButon implements ActionListener
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-        //JFrame frame = new JFrame("Platforma concedii");
-        //Connection conn = new DBconnection().connect();
-//        String sql = "select * from USERS where USERNAME='" + this.nume.getText() + "' and PASSWORD='" + this.pass.getText() +"'";
-        System.out.print(this.nume.getText()+" "+this.pass.getText());
+        
+        //System.out.print(this.nume.getText()+" "+this.pass.getText());
         try
         {
             
-            ConnectionController cc = ConnectionController.getInstance();
+            ConnectionController cc = ConnectionController.getInstance(); //?
             cc.getOut().writeObject(new LogCommand(this.nume.getText(), this.pass.getText()));
             
             User user = (User) cc.getIn().readObject();
@@ -53,9 +51,8 @@ public class AscultatorButon implements ActionListener
             if( user != null )
             {
                 System.out.print("a intrat aici!");
-                JOptionPane.showMessageDialog(null,"Felicitari : "+user.username+", ai reusit sa te loghezi!");
+                //JOptionPane.showMessageDialog(null,"Felicitari : "+user.username+", ai reusit sa te loghezi!");
                 PanouPrincipal panou = new PanouPrincipal(user);
-                panou.setVisible(true);
                 login.dispose();
             }
             else

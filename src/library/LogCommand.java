@@ -27,10 +27,15 @@ public class LogCommand extends Command {
         this.password = password;
     }
 
+    public LogCommand() 
+    {
+        
+    }
+
     @Override
     public Object execute() {
         try {
-            String sql = "select * from USERS where USERNAME='" + this.username + "' and PASSWORD='" + this.password + "'";
+            String sql = "select * from ANGAJAT where USERNAME='" + this.username + "' and PAROLA='" + this.password + "'";
             Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
             ResultSet rs = st.executeQuery(sql);
 
@@ -38,7 +43,10 @@ public class LogCommand extends Command {
 
             if (rs.next()) {
                 res.username = rs.getString("USERNAME");
-                res.password = rs.getString("PASSWORD");
+                res.password = rs.getString("PAROLA");
+                res.zile_concediu_ramase = rs.getInt("ZILE_CONCEDIU_RAMASE");
+                res.nume = rs.getString("NUME");
+                res.prenume = rs.getString("PRENUME");
                 return res;
             }
 

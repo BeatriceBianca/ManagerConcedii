@@ -23,7 +23,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import library.LogCommand;
-import library.TestCommand;
 import library.model.User;
 
 /**
@@ -42,10 +41,10 @@ public class ProjectPAO {
         s.getOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
         ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
-        LogCommand logc = new LogCommand("dfdssfd","sdfafd");
+        LogCommand logc = new LogCommand();
         oos.writeObject(logc);
         User nume = (User)ois.readObject();
-        System.out.print(nume);
+        //System.out.print(nume);
         
         //buton.addActionListener(new AscultatorButon(username.getText());
         frame.setVisible(true); //ca sa fie vizibila fereastra 
