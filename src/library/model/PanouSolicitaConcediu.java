@@ -10,6 +10,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -24,11 +25,9 @@ import projectpao.AscultatorButonTrimiteSolicitare;
 public class PanouSolicitaConcediu extends JFrame
 {
     JTextField zi_start = new JTextField();
-    JTextField luna_start = new JTextField();
-    JTextField an_start = new JTextField();
     JTextField zi_sfarsit = new JTextField();
-    JTextField luna_sfarsit = new JTextField();
-    JTextField an_sfarsit = new JTextField();
+    JComboBox luna_start = new JComboBox();
+    JComboBox luna_sfarsit = new JComboBox();
     JTextField v[] = new JTextField[10];
     JLabel w[] = new JLabel[10];
     
@@ -45,17 +44,11 @@ public class PanouSolicitaConcediu extends JFrame
         constraints.fill = GridBagConstraints.BOTH;
         add(nume,constraints);
         
-        constraints = new GridBagConstraints();
-        JLabel data_start = new JLabel ("Data start:");
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.fill = GridBagConstraints.BOTH;
-        add(data_start,constraints);
         
-        w[0] = new JLabel("Zi:");
+        w[0] = new JLabel("Data start:");
         constraints = new GridBagConstraints();
         constraints.gridx = 0; // pe coloana 
-        constraints.gridy = 2; //pe linia 
+        constraints.gridy = 1; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
         constraints.ipadx = 40;
         constraints.ipadx = 40; //il incadrez intr un patrat
@@ -63,103 +56,48 @@ public class PanouSolicitaConcediu extends JFrame
         //configurez textfiled
         constraints = new GridBagConstraints();
         constraints.gridx = 1; // pe coloana 
-        constraints.gridy = 2; //pe linia 
+        constraints.gridy = 1; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.insets = new Insets(2, 0, 0, 130);
-        constraints.weightx = 0.5; //ocupa tot, 100%
+        constraints.weightx = 0.1; //ocupa tot, 100%
         super.add(zi_start, constraints);
         
-        w[1] = new JLabel("Luna:");
+        
+        String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+
+        luna_start = new JComboBox(months);
+        constraints = new GridBagConstraints();
+        constraints.gridx = 2; // pe coloana 
+        constraints.gridy = 1; //pe linia 
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.weightx = 0.1; //ocupa tot, 100%
+        super.add(luna_start, constraints);
+       
+        
+        w[1] = new JLabel("Data sfarsit:");
         constraints = new GridBagConstraints();
         constraints.gridx = 0; // pe coloana 
-        constraints.gridy = 3; //pe linia 
+        constraints.gridy = 2; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
         constraints.ipadx = 40;
         constraints.ipadx = 40; //il incadrez intr un patrat
         super.add(w[1], constraints); //adaug componenta
-        //
-        constraints = new GridBagConstraints();
-        constraints.gridx = 1; // pe coloana 
-        constraints.gridy = 3; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.insets = new Insets(2, 0, 0, 130);
-        constraints.weightx = 0.5; //ocupa tot, 100%
-        super.add(luna_start, constraints);
-        
-        w[2] = new JLabel("An:");
-        constraints = new GridBagConstraints();
-        constraints.gridx = 0; // pe coloana 
-        constraints.gridy = 4; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.ipadx = 40;
-        constraints.ipadx = 40; //il incadrez intr un patrat
-        super.add(w[2], constraints); //adaug componenta
         //configurez textfiled 
         constraints = new GridBagConstraints();
         constraints.gridx = 1; // pe coloana 
-        constraints.gridy = 4; //pe linia 
+        constraints.gridy = 2; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.insets = new Insets(2, 0, 0, 130);
-        constraints.weightx = 0.5; //ocupa tot, 100%
-        super.add(an_start, constraints);
-        
-        constraints = new GridBagConstraints();
-        JLabel data_sf = new JLabel ("Data sfarsit:");
-        constraints.gridx = 0;
-        constraints.gridy = 5;
-        constraints.fill = GridBagConstraints.BOTH;
-        add(data_sf,constraints);
-        
-        w[3] = new JLabel("Zi:");
-        constraints = new GridBagConstraints();
-        constraints.gridx = 0; // pe coloana 
-        constraints.gridy = 6; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.ipadx = 40;
-        constraints.ipadx = 40; //il incadrez intr un patrat
-        super.add(w[3], constraints); //adaug componenta
-        //configurez textfiled 
-        constraints = new GridBagConstraints();
-        constraints.gridx = 1; // pe coloana 
-        constraints.gridy = 6; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.insets = new Insets(2, 0, 0, 130);
-        constraints.weightx = 0.5; //ocupa tot, 100%
+        constraints.weightx = 0.1; //ocupa tot, 100%
         super.add(zi_sfarsit, constraints);
+     
         
-        w[4] = new JLabel("Luna:");
+        luna_sfarsit = new JComboBox(months);
         constraints = new GridBagConstraints();
-        constraints.gridx = 0; // pe coloana 
-        constraints.gridy = 7; //pe linia 
+        constraints.gridx = 2; // pe coloana 
+        constraints.gridy = 2; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.ipadx = 40;
-        constraints.ipadx = 40; //il incadrez intr un patrat
-        super.add(w[4], constraints); //adaug componenta
-        //configurez textfiled 
-        constraints = new GridBagConstraints();
-        constraints.gridx = 1; // pe coloana 
-        constraints.gridy = 7; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.insets = new Insets(2, 0, 0, 130);
-        constraints.weightx = 0.5; //ocupa tot, 100%
-        super.add(luna_sfarsit, constraints);
+        constraints.weightx = 0.1; //ocupa tot, 100%
+        super.add(luna_sfarsit, constraints); //adaug componenta
         
-        w[5] = new JLabel("An:");
-        constraints = new GridBagConstraints();
-        constraints.gridx = 0; // pe coloana 
-        constraints.gridy = 8; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.ipadx = 40;
-        constraints.ipadx = 40; //il incadrez intr un patrat
-        super.add(w[5], constraints); //adaug componenta
-        //configurez textfiled 
-        constraints = new GridBagConstraints();
-        constraints.gridx = 1; // pe coloana 
-        constraints.gridy = 8; //pe linia 
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.insets = new Insets(2, 0, 0, 130);
-        constraints.weightx = 0.5; //ocupa tot, 100%
-        super.add(an_sfarsit, constraints);
         
         JButton buton = new JButton("Trimite");
         constraints = new GridBagConstraints();
@@ -171,8 +109,9 @@ public class PanouSolicitaConcediu extends JFrame
         constraints.ipady = 20;  //dimensiune
         constraints.insets = new Insets(40, 0, 0, 0);  //top padding
         add(buton, constraints);
-        buton.addActionListener(new AscultatorButonTrimiteSolicitare(zi_start,
-                luna_start,an_start,zi_sfarsit,luna_sfarsit,an_sfarsit,user));
+        
+        buton.addActionListener(new AscultatorButonTrimiteSolicitare(zi_start, luna_start,
+                zi_sfarsit, luna_sfarsit, user));
         
         setVisible(true);
     }

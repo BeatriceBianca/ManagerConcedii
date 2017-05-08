@@ -8,9 +8,15 @@ package projectpao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.Integer.parseInt;
+import java.text.DateFormat;
+import java.text.ParseException;
 import javax.swing.JTextField;
 import library.model.User;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -19,31 +25,43 @@ import java.text.SimpleDateFormat;
 public class AscultatorButonTrimiteSolicitare implements ActionListener
 {
     JTextField zi_start = new JTextField();
-    JTextField luna_start = new JTextField();
-    JTextField an_start = new JTextField();
+    JComboBox luna_start = new JComboBox();
     JTextField zi_sfarsit = new JTextField();
-    JTextField luna_sfarsit = new JTextField();
-    JTextField an_sfarsit = new JTextField();
+    JComboBox luna_sfarsit = new JComboBox();
     User user = new User();
-
-    public AscultatorButonTrimiteSolicitare(JTextField zi_start, JTextField luna_start,
-            JTextField an_start,JTextField zi_sfarsit,JTextField luna_sfarsit,JTextField an_sfarsit,User user) 
+ 
+    public AscultatorButonTrimiteSolicitare(JTextField zi_start, JComboBox luna_start, JTextField zi_sfarsit, 
+                        JComboBox luna_sfarsit, User user)
     {
         this.zi_start = zi_start;
         this.luna_start = luna_start;
-        this.an_start = an_start;
         this.zi_sfarsit = zi_sfarsit;
         this.luna_sfarsit = luna_sfarsit;
-        this.an_sfarsit = an_sfarsit;
-        
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-        //if(parseInt(zi_start.getText()) < 28 && parseInt(luna_sfarsit.getText()) < 12)
-        //TO DO 
-          // System.out.print("Data corecta");
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        
+        String startDateString = new String();
+        String endDateString = new String();
+        
+        startDateString = zi_start.getText() + "-" + luna_start.getSelectedItem() + "-2017";
+        endDateString = zi_sfarsit.getText() + "-" + luna_sfarsit.getSelectedItem() + "-2017";
+        System.out.println(startDateString);
+        System.out.println(endDateString);
+        try {
+            Date startDate = df.parse(startDateString);
+            Date endDate = df.parse(endDateString);
+            
+            if( startDate.before(endDate) )
+                System.out.println("Date corecte!!");
+            else System.out.println("Date incorecte!!");
+        } catch (ParseException ex) {
+            System.out.println("Date gresite!!");
+            Logger.getLogger(AscultatorButonTrimiteSolicitare.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
