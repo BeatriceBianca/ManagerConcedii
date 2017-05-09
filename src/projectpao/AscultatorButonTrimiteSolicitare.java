@@ -111,6 +111,7 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             
                 ConnectionController cc = ConnectionController.getInstance(); //?
                 cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
+                JOptionPane.showMessageDialog(null,"Solicitarea a fost trimisa!");
             }
 
 
