@@ -96,13 +96,9 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             }
         }
         
-//        System.out.println(user.username);
         startDateString = zi_start.getText() + "-" + luna_start.getSelectedItem() + "-2017";
         endDateString = zi_sfarsit.getText() + "-" + luna_sfarsit.getSelectedItem() + "-2017";
         
-//   
-//        System.out.println(startDateString);
-//        System.out.println(endDateString);
         try {
             Date startDate = df.parse(startDateString);
             Date endDate = df.parse(endDateString);
@@ -123,20 +119,7 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             //System.out.println(diff/864000000);
             long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS);
             System.out.println(diff);
-            //System.out.println(parseLong(startDateString));
-            //System.out.println(parseLong(endDateString)-parseLong(startDateString));
-
-            /*else if (startDate.equals(endDate)) {
-//                System.out.println("Date corecte!!");
-                // to do scriu in baza de date
-                long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
             
-                ConnectionController cc = ConnectionController.getInstance(); //?
-                cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
-            } else {
-                JOptionPane.showMessageDialog(null,"Data sfarsit mai recenta decat cea de inceput!");
-                return;
-            }*/
 
             
         } catch (ParseException ex) {
