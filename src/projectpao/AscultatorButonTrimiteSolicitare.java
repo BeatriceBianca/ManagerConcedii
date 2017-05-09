@@ -109,7 +109,7 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             
                 ConnectionController cc = ConnectionController.getInstance(); //?
                 cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
-<<<<<<< HEAD
+
                 JOptionPane.showMessageDialog(null,"Solicitarea a fost trimisa!");
             }
 
@@ -122,17 +122,20 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             System.out.println(diff);
             
 
-            /*else if (startDate.equals(endDate)) {
+            if (startDate.equals(endDate)) {
 //                System.out.println("Date corecte!!");
                 // to do scriu in baza de date
-=======
-            } else if ( startDate.equals(endDate) ) {
->>>>>>> origin/master
-                long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
+            }  
+            if ( startDate.equals(endDate) ) 
+            {
+
+                long diff2 = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
             
                 ConnectionController cc = ConnectionController.getInstance(); //?
-                cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
-            } else {
+                cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff2));
+            }
+            else 
+            {
                 JOptionPane.showMessageDialog(null,"Data sfarsit mai recenta decat cea de inceput!");
                 return;
             }
