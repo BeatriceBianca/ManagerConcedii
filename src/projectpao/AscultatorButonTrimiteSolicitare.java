@@ -109,36 +109,20 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             
                 ConnectionController cc = ConnectionController.getInstance(); //?
                 cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
+                
+            } else if ( startDate.equals(endDate) ) {
 
-                JOptionPane.showMessageDialog(null,"Solicitarea a fost trimisa!");
-            }
-
-
-            else System.out.println("Date incorecte!!");
-            
-            //long diff = endDate.getTime() - startDate.getTime();
-            //System.out.println(diff/864000000);
-            long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS);
-            System.out.println(diff);
-            
-
-            if (startDate.equals(endDate)) {
-//                System.out.println("Date corecte!!");
-                // to do scriu in baza de date
-            }  
-            if ( startDate.equals(endDate) ) 
-            {
-
-                long diff2 = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
+                long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
             
                 ConnectionController cc = ConnectionController.getInstance(); //?
-                cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff2));
-            }
-            else 
-            {
-                JOptionPane.showMessageDialog(null,"Data sfarsit mai recenta decat cea de inceput!");
+                cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
+            } else {
+                
+                JOptionPane.showMessageDialog(null,"Data sfarsit gresita!");
                 return;
             }
+            
+            JOptionPane.showMessageDialog(null,"Solicitarea a fost trimisa!");
             
         } catch (ParseException ex) {
             System.out.println("Date gresite!!");
