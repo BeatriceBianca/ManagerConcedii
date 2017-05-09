@@ -21,14 +21,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
-<<<<<<< HEAD
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.TimeUnit;
 import static java.util.concurrent.TimeUnit.DAYS;
 import library.LogCommand;
-=======
 import javax.swing.JOptionPane;
->>>>>>> origin/master
 import library.SolicitConcediuCommand;
 import server.DBcontroller;
 
@@ -119,7 +116,7 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
                 ConnectionController cc = ConnectionController.getInstance(); //?
                 cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
             }
-<<<<<<< HEAD
+
             else System.out.println("Date incorecte!!");
             
             //long diff = endDate.getTime() - startDate.getTime();
@@ -128,8 +125,8 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             System.out.println(diff);
             //System.out.println(parseLong(startDateString));
             //System.out.println(parseLong(endDateString)-parseLong(startDateString));
-=======
-            else if (startDate.equals(endDate)) {
+
+            /*else if (startDate.equals(endDate)) {
 //                System.out.println("Date corecte!!");
                 // to do scriu in baza de date
                 long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
@@ -139,8 +136,8 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             } else {
                 JOptionPane.showMessageDialog(null,"Data sfarsit mai recenta decat cea de inceput!");
                 return;
-            }
->>>>>>> origin/master
+            }*/
+
             
         } catch (ParseException ex) {
             System.out.println("Date gresite!!");
