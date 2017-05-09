@@ -50,7 +50,7 @@ public class AscultatorButon implements ActionListener
             
             if( user != null )
             {
-                System.out.print("a intrat aici!");
+//                System.out.print("a intrat aici!");
                 //JOptionPane.showMessageDialog(null,"Felicitari : "+user.username+", ai reusit sa te loghezi!");
                 PanouPrincipal panou = new PanouPrincipal(user);
                 login.dispose();

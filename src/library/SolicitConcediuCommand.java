@@ -5,9 +5,11 @@
  */
 package library;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -19,20 +21,15 @@ import server.DBcontroller;
 public class SolicitConcediuCommand extends Command
 {
     User user;
-    String zi_start;
-    String zi_sfarsit;
-    String luna_start;
-    String luna_sfarsit;
+    String startDate;
+    String endDate;
     long diff;
 
-    public SolicitConcediuCommand(User user,JTextField zi_start,JTextField zi_sfarsit,JComboBox luna_start
-            ,JComboBox luna_sfarsit, long diff) 
+    public SolicitConcediuCommand(User user, String startDate, String endDate, long diff) 
     {
         this.user = user;
-        this.zi_start = zi_start.getText();
-        this.luna_start = (String) luna_start.getSelectedItem();
-        this.zi_sfarsit = zi_sfarsit.getText();
-        this.luna_sfarsit =(String) luna_sfarsit.getSelectedItem();
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.diff = diff;
         
     }
@@ -42,14 +39,17 @@ public class SolicitConcediuCommand extends Command
     {
         try {
             
-            String sql = "update ANGAJAT set zile_concediu_ramase = zile_concediu_ramase - " + diff + "where USERNAME='" + user.username + "'";
+            String sql = "update ANGAJAT set zile_concediu_ramase = zile_concediu_ramase - " + diff + " where USERNAME='" + user.username + "'";
             Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
             st.executeUpdate(sql);
+//                
                 
-                
-//            String sql = "insert into concedii values(" + null+ "," + null + ","+null+"'0',"+user.id+");";
-//            Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
-//            ResultSet rs = st.executeQuery(sql);
+            String sql1 = "INSERT INTO Concedii (start_date, end_date, stare, angajat_id) VALUES ( to_date('" +
+                    startDate + "', 'dd-mm-yyyy'), to_date(' " + endDate + "','dd-mm-yyyy'), 0 ," + user.id + ")";
+ 
+            System.out.println(sql1);
+            Statement st1 = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
+            st1.executeUpdate(sql1);
 
         } catch (SQLException ex) {
             Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
