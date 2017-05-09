@@ -26,9 +26,11 @@ public class PanouSolicitaConcediu extends JFrame
     JComboBox luna_sfarsit = new JComboBox();
     JTextField v[] = new JTextField[10];
     JLabel w[] = new JLabel[10];
+    User user = new User();
     
     public PanouSolicitaConcediu(User user)
     {
+        this.user = user;
         super.setBounds(480, 230, 300, 350);
         super.setMinimumSize(new Dimension(350, 300));
         setTitle("Panou solicita concediu");
