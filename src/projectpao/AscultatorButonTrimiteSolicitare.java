@@ -8,6 +8,9 @@ package projectpao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import javax.swing.JTextField;
@@ -20,6 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import library.SolicitConcediuCommand;
+import server.DBcontroller;
 
 
 public class AscultatorButonTrimiteSolicitare implements ActionListener
@@ -37,6 +41,7 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
         this.luna_start = luna_start;
         this.zi_sfarsit = zi_sfarsit;
         this.luna_sfarsit = luna_sfarsit;
+        this.user = user;
     }
 
     @Override
@@ -87,6 +92,7 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             }
         }
         
+        System.out.println(user.username);
         startDateString = zi_start.getText() + "-" + luna_start.getSelectedItem() + "-2017";
         endDateString = zi_sfarsit.getText() + "-" + luna_sfarsit.getSelectedItem() + "-2017";
         
@@ -101,18 +107,15 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             {
                 System.out.println("Date corecte!!");
                 // to do scriu in baza de date
-               ConnectionController cc = ConnectionController.getInstance(); //?
-                cc.getOut().writeObject(new SolicitConcediuCommand(user,zi_start, zi_sfarsit,luna_start,luna_sfarsit));
-
+                long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
             
+                ConnectionController cc = ConnectionController.getInstance(); //?
+                cc.getOut().writeObject(new SolicitConcediuCommand(user,zi_start, zi_sfarsit,luna_start,luna_sfarsit, diff));
             }
             else {
                 JOptionPane.showMessageDialog(null,"Data sfarsit mai recenta decat cea de inceput!");
                 return;
             }
-            
-            long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
-            System.out.println(diff);
             
         } catch (ParseException ex) {
             System.out.println("Date gresite!!");

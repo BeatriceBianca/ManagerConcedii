@@ -23,15 +23,17 @@ public class SolicitConcediuCommand extends Command
     String zi_sfarsit;
     String luna_start;
     String luna_sfarsit;
+    long diff;
 
     public SolicitConcediuCommand(User user,JTextField zi_start,JTextField zi_sfarsit,JComboBox luna_start
-            ,JComboBox luna_sfarsit) 
+            ,JComboBox luna_sfarsit, long diff) 
     {
         this.user = user;
         this.zi_start = zi_start.getText();
         this.luna_start = (String) luna_start.getSelectedItem();
         this.zi_sfarsit = zi_sfarsit.getText();
         this.luna_sfarsit =(String) luna_sfarsit.getSelectedItem();
+        this.diff = diff;
         
     }
     
@@ -39,9 +41,15 @@ public class SolicitConcediuCommand extends Command
     public Object execute()
     {
         try {
-            String sql = "insert into concedii values(" + null+ "," + null + ","+null+"'0',"+user.id+");";
+            
+            String sql = "update ANGAJAT set zile_concediu_ramase = zile_concediu_ramase - " + diff + "where USERNAME='" + user.username + "'";
             Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
-            ResultSet rs = st.executeQuery(sql);
+            st.executeUpdate(sql);
+                
+                
+//            String sql = "insert into concedii values(" + null+ "," + null + ","+null+"'0',"+user.id+");";
+//            Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
+//            ResultSet rs = st.executeQuery(sql);
 
         } catch (SQLException ex) {
             Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
