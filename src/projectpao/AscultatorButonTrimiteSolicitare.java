@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import java.time.temporal.ChronoUnit;
+import java.util.concurrent.TimeUnit;
 import static java.util.concurrent.TimeUnit.DAYS;
 import library.LogCommand;
 import library.SolicitConcediuCommand;
@@ -71,7 +72,8 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             
             //long diff = endDate.getTime() - startDate.getTime();
             //System.out.println(diff/864000000);
-            
+            long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS);
+            System.out.println(diff);
             //System.out.println(parseLong(startDateString));
             //System.out.println(parseLong(endDateString)-parseLong(startDateString));
             

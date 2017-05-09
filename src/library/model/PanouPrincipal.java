@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import projectpao.AscultatorButon;
 import projectpao.AscultatorSolicitaConcediu;
+import projectpao.AscultatorVeziConcediiAprobate;
 
 
 public class PanouPrincipal extends JFrame
@@ -68,6 +69,7 @@ public class PanouPrincipal extends JFrame
         super.add(buton3, constraints);
         
         buton1.addActionListener(new AscultatorSolicitaConcediu(user));
+        buton2.addActionListener(new AscultatorVeziConcediiAprobate(user));
         
         setVisible(true);
     }

@@ -41,9 +41,9 @@ public class ProjectPAO {
         s.getOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
         ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
-        LogCommand logc = new LogCommand();
+        /*LogCommand logc = new LogCommand();
         oos.writeObject(logc);
-        User nume = (User)ois.readObject();
+        User nume = (User)ois.readObject();*/
         //System.out.print(nume);
         
         //buton.addActionListener(new AscultatorButon(username.getText());

@@ -27,7 +27,7 @@ public class AscultatorButon implements ActionListener
     JTextField nume, pass;
     JFrame login;
 
-    AscultatorButon(JTextField username, JPasswordField password, JButton buton,JFrame frame) 
+    AscultatorButon(JTextField username, JPasswordField password,JFrame frame) 
     {
         this.nume = username;
         this.pass = password;

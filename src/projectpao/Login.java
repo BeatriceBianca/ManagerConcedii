@@ -76,7 +76,7 @@ public class Login extends JFrame {
         constraints.insets = new Insets(40, 0, 0, 0);  //top padding
         super.add(buton, constraints);
 
-        buton.addActionListener(new AscultatorButon(username, password, buton, this));
+        buton.addActionListener(new AscultatorButon(username, password, this));
     }
 
 }
