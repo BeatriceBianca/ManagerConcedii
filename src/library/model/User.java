@@ -9,4 +9,5 @@ public class User implements Serializable {
     public String nume;
     public String prenume;
     public int zile_concediu_ramase;
+    public int id;
 }

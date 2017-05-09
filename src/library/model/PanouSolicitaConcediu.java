@@ -18,10 +18,6 @@ import javax.swing.SwingConstants;
 import projectpao.AscultatorButon;
 import projectpao.AscultatorButonTrimiteSolicitare;
 
-/**
- *
- * @author Bogdan-Andrei
- */
 public class PanouSolicitaConcediu extends JFrame
 {
     JTextField zi_start = new JTextField();

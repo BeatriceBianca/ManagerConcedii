@@ -13,10 +13,6 @@ import java.util.logging.Logger;
 import library.model.User;
 import server.DBcontroller;
 
-/**
- *
- * @author Bogdan-Andrei
- */
 public class LogCommand extends Command {
 
     String username;
@@ -47,6 +43,7 @@ public class LogCommand extends Command {
                 res.zile_concediu_ramase = rs.getInt("ZILE_CONCEDIU_RAMASE");
                 res.nume = rs.getString("NUME");
                 res.prenume = rs.getString("PRENUME");
+                res.id = rs.getInt("ANGAJAT_ID");
                 return res;
             }
 

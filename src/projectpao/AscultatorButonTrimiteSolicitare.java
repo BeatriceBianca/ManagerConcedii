@@ -7,7 +7,9 @@ package projectpao;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
 import java.text.DateFormat;
 import java.text.ParseException;
 import javax.swing.JTextField;
@@ -17,11 +19,12 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import java.time.temporal.ChronoUnit;
+import static java.util.concurrent.TimeUnit.DAYS;
+import library.LogCommand;
+import library.SolicitConcediuCommand;
 
-/**
- *
- * @author Bogdan-Andrei
- */
+
 public class AscultatorButonTrimiteSolicitare implements ActionListener
 {
     JTextField zi_start = new JTextField();
@@ -56,10 +59,26 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             Date endDate = df.parse(endDateString);
             
             if( startDate.before(endDate) )
+            {
                 System.out.println("Date corecte!!");
+                // to do scriu in baza de date
+               ConnectionController cc = ConnectionController.getInstance(); //?
+                cc.getOut().writeObject(new SolicitConcediuCommand(user,zi_start, zi_sfarsit,luna_start,luna_sfarsit));
+
+            
+            }
             else System.out.println("Date incorecte!!");
+            
+            //long diff = endDate.getTime() - startDate.getTime();
+            //System.out.println(diff/864000000);
+            
+            //System.out.println(parseLong(startDateString));
+            //System.out.println(parseLong(endDateString)-parseLong(startDateString));
+            
         } catch (ParseException ex) {
             System.out.println("Date gresite!!");
+            Logger.getLogger(AscultatorButonTrimiteSolicitare.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(AscultatorButonTrimiteSolicitare.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

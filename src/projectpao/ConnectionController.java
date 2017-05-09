@@ -12,10 +12,6 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Bogdan-Andrei
- */
 public class ConnectionController {
 
     private static final ConnectionController instance = new ConnectionController();
