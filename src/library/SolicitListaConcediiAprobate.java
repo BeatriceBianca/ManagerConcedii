@@ -35,13 +35,13 @@ public class SolicitListaConcediiAprobate extends Command
     {
         try {
             //String sql = "select * from concedii where ANGAJAT_ID=" + this.user.id + " and STARE=" + 1 + "";
-            String sql = "select * from concedii;";
+            String sql = "select * from CONCEDII where angajat_id = " + this.user.id;
             Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
             ResultSet rs = st.executeQuery(sql);
+            System.out.println(sql);
+            List<Concediu> lista_con = new ArrayList<Concediu>();
 
-            LinkedList<Concediu> lista_con =  new LinkedList<>();
-
-            if (rs.next()) 
+            while (rs.next()) 
             {
                 Concediu concediu = new Concediu();
                 concediu.data_start = rs.getString("START_DATE");
