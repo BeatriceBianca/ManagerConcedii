@@ -49,24 +49,16 @@ public class PanouPrincipal extends JFrame
         constraints.gridy = 2; //pe linia 
         constraints.ipadx = 30;  //dimensiune
         constraints.ipady = 20;  //dimensiune
-        constraints.insets = new Insets(5, 0, 5, 0);
+        constraints.insets = new Insets(20, 0, 5, 0);
         super.add(buton1, constraints);
         
-        JButton buton2 = new JButton("Vezi concedii aprobate!");
+        JButton buton2 = new JButton("Vezi concedii!");
         constraints.gridx = 0; // pe coloana 
         constraints.gridy = 3; //pe linia 
         constraints.ipadx = 30;  //dimensiune
         constraints.ipady = 20;  //dimensiune
-        constraints.insets = new Insets(5, 0, 5, 0);
+        constraints.insets = new Insets(10, 0, 5, 0);
         super.add(buton2, constraints);
-        
-        JButton buton3 = new JButton("Vezi concedii in asteptare!");
-        constraints.gridx = 0; // pe coloana 
-        constraints.gridy = 4; //pe linia 
-        constraints.ipadx = 30;  //dimensiune
-        constraints.ipady = 20;  //dimensiune
-        constraints.insets = new Insets(5, 0, 5, 0);
-        super.add(buton3, constraints);
         
         buton1.addActionListener(new AscultatorSolicitaConcediu(user));
         buton2.addActionListener(new AscultatorVeziConcediiAprobate(user));
