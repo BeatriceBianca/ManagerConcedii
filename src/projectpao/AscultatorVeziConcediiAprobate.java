@@ -8,13 +8,13 @@ package projectpao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import library.LogCommand;
 import library.SolicitListaConcediiAprobate;
 import library.model.Concediu;
 import library.model.PanouConcediiAprobate;
-import library.model.PanouPrincipal;
 import library.model.User;
 
 public class AscultatorVeziConcediiAprobate implements ActionListener
@@ -37,22 +37,17 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
             ConnectionController cc = ConnectionController.getInstance(); //?
             cc.getOut().writeObject(new SolicitListaConcediiAprobate(this.user));
             
-            LinkedList<Concediu> lista_con = (LinkedList<Concediu>) cc.getIn().readObject();
+            List<Concediu> lista = (List<Concediu>) cc.getIn().readObject();
             
-            if( lista_con != null )
-            {
-                System.out.print("a intrat SI aici!");
-                //JOptionPane.showMessageDialog(null,"Felicitari : "+user.username+", ai reusit sa te loghezi!");
-                PanouConcediiAprobate pca = new PanouConcediiAprobate(user);
-            }
-            else
-            {
+            if (!lista.isEmpty()) {
+                PanouConcediiAprobate pca = new PanouConcediiAprobate(lista);
+            } else {
                 JOptionPane.showMessageDialog(null,"Nu exista concedii!");
             }
-        }
-        catch(IOException | ClassNotFoundException e)
-        {
-            System.out.print("EXCEPTIE"+e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
