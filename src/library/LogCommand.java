@@ -17,10 +17,12 @@ public class LogCommand extends Command {
 
     String username;
     String password;
+    //int tip;
 
     public LogCommand(String username, String password) {
         this.username = username;
         this.password = password;
+        //this.manager_id = id;
     }
 
     public LogCommand() 
@@ -44,6 +46,8 @@ public class LogCommand extends Command {
                 res.nume = rs.getString("NUME");
                 res.prenume = rs.getString("PRENUME");
                 res.id = rs.getInt("ANGAJAT_ID");
+                res.tip = rs.getInt("TIP");
+                //System.out.print(res.tip);
                 return res;
             }
 

@@ -19,6 +19,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import library.LogCommand;
 import library.model.PanouPrincipal;
+import library.model.PanouPrincipalM;
 import library.model.User;
 
 public class AscultatorButon implements ActionListener
@@ -48,12 +49,23 @@ public class AscultatorButon implements ActionListener
             
             User user = (User) cc.getIn().readObject();
             
-            if( user != null )
+            if( user != null)
             {
-//                System.out.print("a intrat aici!");
+              //System.out.print("a intrat aici!");
                 //JOptionPane.showMessageDialog(null,"Felicitari : "+user.username+", ai reusit sa te loghezi!");
-                PanouPrincipal panou = new PanouPrincipal(user);
-                login.dispose();
+                //PanouPrincipal panou = new PanouPrincipal(user);
+                   // login.dispose();
+                //System.out.println(user.nume+" "+user.tip+" "+user.id+" "+user.zile_concediu_ramase);
+                if(user.tip == 2)//angajat
+                {
+                    PanouPrincipal panou = new PanouPrincipal(user);
+                    login.dispose();
+                }
+                if(user.tip == 1)//manager
+                {
+                    PanouPrincipalM ppm = new PanouPrincipalM(user);
+                    login.dispose();
+                }
             }
             else
             {

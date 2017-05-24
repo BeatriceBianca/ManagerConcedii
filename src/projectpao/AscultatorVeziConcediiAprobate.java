@@ -28,12 +28,9 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent ae) 
-    {
-        //to do
-        
+    {  
         try
         {
-            
             ConnectionController cc = ConnectionController.getInstance(); //?
             cc.getOut().writeObject(new SolicitListaConcediiAprobate(this.user));
             
@@ -44,9 +41,9 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
             } else {
                 JOptionPane.showMessageDialog(null,"Nu exista concedii!");
             }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } 
+        catch (ClassNotFoundException | IOException ex) 
+        {
             Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
