@@ -38,18 +38,26 @@ public class SolicitConcediuCommand extends Command
     public Object execute()
     {
         try {
-            
-            String sql = "update ANGAJAT set zile_concediu_ramase = zile_concediu_ramase - " + diff + " where USERNAME='" + user.username + "'";
+            String sql;
+            sql = "update ANGAJAT set zile_concediu_ramase = zile_concediu_ramase - " + diff + " where USERNAME='" + user.username + "'";
             Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
-            st.executeUpdate(sql);
-//                
+            st.executeUpdate(sql);                
                 
-            String sql1 = "INSERT INTO Concedii (start_date, end_date, stare, angajat_id) VALUES ( to_date('" +
+            sql = "select tip from angajat where angajat_id = " + user.id;
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int tip = rs.getInt("tip");
+            
+            if (tip == 1){
+                sql = "INSERT INTO Concedii (start_date, end_date, stare, angajat_id) VALUES ( to_date('" +
+                    startDate + "', 'dd-mm-yyyy'), to_date(' " + endDate + "','dd-mm-yyyy'), 1 ," + user.id + ")";
+            } else {
+                sql = "INSERT INTO Concedii (start_date, end_date, stare, angajat_id) VALUES ( to_date('" +
                     startDate + "', 'dd-mm-yyyy'), to_date(' " + endDate + "','dd-mm-yyyy'), 0 ," + user.id + ")";
+            }
  
-            System.out.println(sql1);
             Statement st1 = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
-            st1.executeUpdate(sql1);
+            st1.executeUpdate(sql);
 
         } catch (SQLException ex) {
             Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);

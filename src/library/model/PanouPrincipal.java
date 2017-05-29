@@ -49,7 +49,7 @@ public class PanouPrincipal extends JFrame
         constraints.gridy = 2; //pe linia 
         constraints.ipadx = 30;  //dimensiune
         constraints.ipady = 20;  //dimensiune
-        constraints.insets = new Insets(20, 0, 5, 0);
+        constraints.insets = new Insets(10, 0, 5, 0);
         super.add(buton1, constraints);
         
         JButton buton2 = new JButton("Vezi concedii!");

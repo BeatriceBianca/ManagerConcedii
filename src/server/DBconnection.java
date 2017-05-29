@@ -28,16 +28,9 @@ public class DBconnection
         }
 
         try {
-            //pas 1
+      
             connection = DriverManager.getConnection("jdbc:oracle:thin:@193.226.51.37:1521:o11g", "petras_bogdan", "parola");// te conectezi la baza de date (jdbc:oracle:thin:@ + ip + : + port + : + o11g)
-            //pas 2
-            /*
-            Statement statement = connection.createStatement();//faci rost de un statement (cu el executi query-uri)
-            
-            //pas 3
-            ResultSet result = statement.executeQuery("select * from users");//trimiti un query si memorezi ResultSet-ul
-*/
-            //connection.close();//inchizi conexiunea
+
         } catch (SQLException ex) {
             Logger.getLogger(DBconnection.class.getName()).log(Level.SEVERE, null, ex);
         }
