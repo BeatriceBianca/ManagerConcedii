@@ -33,7 +33,13 @@ public class ClientConnection implements Runnable {
                 this.out.writeObject(result);
             }
         } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(ClientConnection.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ClientConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            try {
+                this.socket.close();
+            } catch (IOException e) {
+            }
         }
     }
 }
