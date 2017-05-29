@@ -10,16 +10,25 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import library.SolicitAprobareCommand;
+import projectpao.AscultatorButonTrimiteSolicitare;
+import projectpao.ConnectionController;
 
 
 public class PanouListaCereri extends JFrame
@@ -50,7 +59,6 @@ public class PanouListaCereri extends JFrame
                                     });
           
         setLayout(new GridBagLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridBagConstraints constraints;
         
         constraints = new GridBagConstraints();
@@ -104,14 +112,62 @@ public class PanouListaCereri extends JFrame
         JButton submit = new JButton("Submit");
         constraints.gridx = 0; // pe coloana 
         constraints.gridy = 3; //pe linia
-//        constraints.ipadx = 15;  //dimensiune
-//        constraints.ipady = 10;  //dimensiune
         this.add(submit, constraints);
         
         this.setBounds(470, 220, 460, 350);
         this.setMinimumSize(new Dimension(350, 300));
-        
         this.setVisible(true);
+//        
+//        this.addWindowListener(new java.awt.event.WindowAdapter(){
+//            @Override
+//            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+//                //reseteaza lista ?????
+//            }
+//        });
+        
+        submit.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String cod_con = cod_concediu.getText();
+                int response = 1;
+                if (acceptButton.isSelected())
+                    response = 1;
+                if (refuseButton.isSelected())
+                    response = -1;
+                
+                if (cod_con.equals("")){
+                    JOptionPane.showMessageDialog(null,"Nu ai ales id-ul concediului!");
+                    return;
+                } else {
+                    try {
+                        int id = Integer.parseInt(cod_con);
+                        System.out.println("ascultator");
+                        boolean existaCerere = false;
+                        for (Cerere c: list) {
+                            if (c.concediu_id == id){
+                                existaCerere = true;
+                                break;
+                            }
+                        }
+
+                        if (!existaCerere){
+                            JOptionPane.showMessageDialog(null,"Nu exista cerere cu acest id!");
+                        } else {
+                            ConnectionController cc = ConnectionController.getInstance();
+                            try {
+                                cc.getOut().writeObject(new SolicitAprobareCommand(id,response));
+                            } catch (IOException ex) {
+                                Logger.getLogger(PanouListaCereri.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    } catch(Exception ex) {
+                        JOptionPane.showMessageDialog(null,"Format id gresit!");
+                        return;
+                    }
+                }
+            }
+        });
     }
     
 }

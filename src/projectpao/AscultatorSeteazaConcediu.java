@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import library.SolicitListaCereri;
-import library.SolicitListaConcediiAprobate;
 import library.model.Cerere;
 import library.model.PanouListaCereri;
 import library.model.User;
@@ -44,10 +43,6 @@ public class AscultatorSeteazaConcediu implements ActionListener
             if (!lista.isEmpty()) 
             {
                 PanouListaCereri pca = new PanouListaCereri(lista);
-                //System.out.println("Nu e null lista");
-                //System.out.println(lista.get(0).angajat_id+" "+lista.get(0).nume);
-                
-                //TO DO JTABEL IN CARE APARE LISTA 
             } 
             else 
             {

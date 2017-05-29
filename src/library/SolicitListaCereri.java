@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import library.model.Cerere;
-import library.model.Concediu;
 import library.model.User;
 import server.DBcontroller;
 

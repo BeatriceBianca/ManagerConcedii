@@ -8,26 +8,18 @@ package projectpao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import javax.swing.JTextField;
 import library.model.User;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
-import java.time.temporal.ChronoUnit;
 import java.util.concurrent.TimeUnit;
-import static java.util.concurrent.TimeUnit.DAYS;
-import library.LogCommand;
 import javax.swing.JOptionPane;
 import library.SolicitConcediuCommand;
-import server.DBcontroller;
 
 
 public class AscultatorButonTrimiteSolicitare implements ActionListener

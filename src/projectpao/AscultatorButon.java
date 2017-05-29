@@ -39,8 +39,6 @@ public class AscultatorButon implements ActionListener
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
-        
-        //System.out.print(this.nume.getText()+" "+this.pass.getText());
         try
         {
             
@@ -51,11 +49,6 @@ public class AscultatorButon implements ActionListener
             
             if( user != null)
             {
-              //System.out.print("a intrat aici!");
-                //JOptionPane.showMessageDialog(null,"Felicitari : "+user.username+", ai reusit sa te loghezi!");
-                //PanouPrincipal panou = new PanouPrincipal(user);
-                   // login.dispose();
-                //System.out.println(user.nume+" "+user.tip+" "+user.id+" "+user.zile_concediu_ramase);
                 if(user.tip == 2)//angajat
                 {
                     PanouPrincipal panou = new PanouPrincipal(user);
