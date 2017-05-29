@@ -26,7 +26,7 @@ public class PanouPrincipal extends JFrame
         JLabel zile_concediu = new JLabel ("Zile concediu ramase: "+user.zile_concediu_ramase);
         super.setBounds(450, 200, 300, 350);
         super.setMinimumSize(new Dimension(350, 300));
-;
+
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridBagConstraints constraints;
