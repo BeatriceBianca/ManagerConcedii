@@ -38,7 +38,7 @@ public class SolicitListaCereri extends Command
             //in sql iau o lista de concedii care asteapta sa fie aprobate/refuzate dar trb sa am si nume/prenume din tabela angajat
             Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
             ResultSet rs = st.executeQuery(sql);
-            List<Cerere> lista_cereri = new ArrayList<>();
+            ArrayList<Cerere> lista_cereri = new ArrayList<>();
             while(rs.next())
             {
                 Cerere cer = new Cerere();
@@ -50,6 +50,7 @@ public class SolicitListaCereri extends Command
                 cer.prenume = rs.getString("PRENUME");
                 lista_cereri.add(cer);
             }
+            rs.close();
             return lista_cereri;
         }
         catch(SQLException ex)

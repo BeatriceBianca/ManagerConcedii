@@ -109,13 +109,14 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             
                 ConnectionController cc = ConnectionController.getInstance(); //?
                 cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
-                
+                cc.getOut().flush();
             } else if ( startDate.equals(endDate) ) {
 
                 long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
             
                 ConnectionController cc = ConnectionController.getInstance(); //?
                 cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
+                cc.getOut().flush();
             } else {
                 
                 JOptionPane.showMessageDialog(null,"Data sfarsit gresita!");

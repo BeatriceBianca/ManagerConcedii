@@ -13,6 +13,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,9 +34,9 @@ import projectpao.ConnectionController;
 
 public class PanouListaCereri extends JFrame
 {
-    List<Cerere> list;
+    ArrayList<Cerere> list;
 
-    public PanouListaCereri(List<Cerere> lista) 
+    public PanouListaCereri(ArrayList<Cerere> lista) 
     {
         this.list = lista;
         this.setTitle("Lista cereri");
@@ -48,6 +49,8 @@ public class PanouListaCereri extends JFrame
         model.addColumn("End date");
         JTable table = new JTable(model);
         
+        try{
+            
         for ( int i = 0; i < list.size(); i++ )
             model.addRow(new Object[]{ list.get(i).concediu_id, 
                                        list.get(i).nume,
@@ -161,6 +164,13 @@ public class PanouListaCereri extends JFrame
                 }
             }
         });
+        
+        
+        }
+        catch(ClassCastException e)
+        {
+            System.out.println("Eroare stupida");
+        }
     }
     
 }

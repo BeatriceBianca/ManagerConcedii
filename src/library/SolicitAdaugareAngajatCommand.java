@@ -32,9 +32,9 @@ public class SolicitAdaugareAngajatCommand extends Command{
     @Override
     public Object execute()
     {   
-        Statement st = null;
+        //Statement st = null;
         try {
-            st = DBcontroller.getI().getSt();
+            Statement st = DBcontroller.getI().getSt();
         
             String sql = "Insert into Angajat (nume, prenume, username, parola, manager_id, zile_concediu_ramase, tip) values" +
                 "('" + nume + "','" + prenume + "','" + username + "','" + parola + "'," + manager_id + ",23,2)";

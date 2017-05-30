@@ -38,7 +38,7 @@ public class SolicitListaConcediiAprobate extends Command
             Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
             ResultSet rs = st.executeQuery(sql);
             System.out.println(sql);
-            List<Concediu> lista_con = new ArrayList<Concediu>();
+            ArrayList<Concediu> lista_con = new ArrayList<>();
 
             while (rs.next()) 
             {
@@ -48,12 +48,14 @@ public class SolicitListaConcediiAprobate extends Command
                 concediu.stare = rs.getInt("STARE");
                 lista_con.add(concediu);
             }
+            rs.close();
             return lista_con;
 
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Eroare la: SolicitListaConcediiAprobateCommand");
         }
         return null;
     }

@@ -8,6 +8,7 @@ package projectpao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,8 +38,8 @@ public class AscultatorSeteazaConcediu implements ActionListener
         {
             ConnectionController cc = ConnectionController.getInstance();
             cc.getOut().writeObject(new SolicitListaCereri(this.user)); //this.user
-            
-            List<Cerere> lista = (List<Cerere>) cc.getIn().readObject();
+            cc.getOut().flush();
+            ArrayList<Cerere> lista = (ArrayList<Cerere>) cc.getIn().readObject();
             
             if (!lista.isEmpty()) 
             {
@@ -49,9 +50,13 @@ public class AscultatorSeteazaConcediu implements ActionListener
                 JOptionPane.showMessageDialog(null,"Nu exista concedii!");
             }
         }
+        catch(NullPointerException ef)
+        {
+            System.out.println("Alt nullpointer");
+        }
         catch(IOException e)
         {
-            
+            System.out.println("Eroare la: ascultator seteaza concediu");
         } 
         catch (ClassNotFoundException ex) 
         {

@@ -19,6 +19,7 @@ public class ClientConnection implements Runnable {
         try {
             this.in = new ObjectInputStream(socket.getInputStream());
             this.out = new ObjectOutputStream(socket.getOutputStream());
+            out.flush();
         } catch (IOException ex) {
             Logger.getLogger(ClientConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -31,9 +32,12 @@ public class ClientConnection implements Runnable {
                 Command c = (Command) this.in.readObject();
                 Object result = c.execute();
                 this.out.writeObject(result);
+                out.flush();
             }
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) 
+        {
             //Logger.getLogger(ClientConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("eroare CC");
         }
         finally {
             try {

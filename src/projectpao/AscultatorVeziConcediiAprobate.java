@@ -8,6 +8,7 @@ package projectpao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,20 +34,23 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
         {
             ConnectionController cc = ConnectionController.getInstance(); //?
             cc.getOut().writeObject(new SolicitListaConcediiAprobate(this.user));
+            cc.getOut().flush();
+            ArrayList<Concediu> lista = (ArrayList<Concediu>) cc.getIn().readObject();
             
-            List<Concediu> lista = (List<Concediu>) cc.getIn().readObject();
-            
-            if (!lista.isEmpty()) {
+            //if (!lista.isEmpty()) {
                 PanouConcediiAprobate pca = new PanouConcediiAprobate(lista);
-            } else {
-                JOptionPane.showMessageDialog(null,"Nu exista concedii!");
-            }
+            //} else {
+             //   JOptionPane.showMessageDialog(null,"Nu exista concedii!");
+            //}
         } 
-        catch (ClassNotFoundException | IOException ex) 
+        catch ( IOException ex ) 
         {
+            //Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Eroare la AscultatorVeziConcediiAprobate");
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }
+    }  
     
 }

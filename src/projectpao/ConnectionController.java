@@ -26,6 +26,7 @@ public class ConnectionController {
         try {
             this.s = new Socket(ip, 4321);
             this.out = new ObjectOutputStream(s.getOutputStream());
+            out.flush();
             this.in = new ObjectInputStream(s.getInputStream());
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);

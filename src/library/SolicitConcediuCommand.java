@@ -58,6 +58,8 @@ public class SolicitConcediuCommand extends Command
  
             Statement st1 = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
             st1.executeUpdate(sql);
+            rs.close();
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);

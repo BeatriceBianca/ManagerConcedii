@@ -48,8 +48,10 @@ public class LogCommand extends Command {
                 res.id = rs.getInt("ANGAJAT_ID");
                 res.tip = rs.getInt("TIP");
                 //System.out.print(res.tip);
+                rs.close();
                 return res;
             }
+            rs.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
