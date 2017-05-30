@@ -3,24 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/C:/Users/Mindit/Documents/GitHub/ManagerConcedii/src/library/SolicitAdaugareAngajatCommand.java</file>
-=======
-<<<<<<< HEAD
-=======
->>>>>>> parent of 2483a51... manger
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/projectpao/AscultatorSeteazaConcediu.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/server/DBcontroller.java</file>
             <file>file:/D:/Manager%20concedii/ManagerConcedii/src/projectpao/AscultatorButon.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/Concediu.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/PanouPrincipalM.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/projectpao/ConnectionController.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/SolicitConcediuCommand.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/User.java</file>
             <file>file:/D:/Manager%20concedii/ManagerConcedii/src/projectpao/Login.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/Cerere.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/projectpao/AscultatorSolicitaConcediu.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/PanouAdaugaAngajat.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/PanouPrincipal.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/projectpao/AscultatorButonTrimiteSolicitare.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/projectpao/AscultatorVeziConcediiAprobate.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/SolicitAdaugareAngajatCommand.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/PanouListaCereri.java</file>
             <file>file:/D:/Manager%20concedii/ManagerConcedii/src/server/Server.java</file>
-=======
-            <file>file:/C:/Users/Mindit/Documents/GitHub/ManagerConcedii/src/library/model/PanouPrincipal.java</file>
-            <file>file:/C:/Users/Mindit/Documents/GitHub/ManagerConcedii/src/projectpao/Login.java</file>
->>>>>>> origin/master
-<<<<<<< HEAD
->>>>>>> parent of 2483a51... manger
-=======
->>>>>>> parent of 2483a51... manger
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/SolicitAprobareCommand.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/Command.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/PanouSolicitaConcediu.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/server/ClientConnection.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/SolicitListaCereri.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/SolicitListaConcediiAprobate.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/LogCommand.java</file>
+            <file>file:/D:/Manager%20concedii/ManagerConcedii/src/library/model/PanouConcediiAprobate.java</file>
         </group>
     </open-files>
 </project-private>

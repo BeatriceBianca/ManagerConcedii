@@ -29,12 +29,11 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent ae) 
-    {
+    {  
         //to do
         
         try
         {
-            
             ConnectionController cc = ConnectionController.getInstance(); //?
             cc.getOut().writeObject(new SolicitListaConcediiAprobate(this.user));
             cc.getOut().flush();
@@ -42,7 +41,6 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
             
             //if (!lista.isEmpty()) {
                 PanouConcediiAprobate pca = new PanouConcediiAprobate(lista);
-<<<<<<< HEAD
             //} else {
              //   JOptionPane.showMessageDialog(null,"Nu exista concedii!");
             //}
@@ -52,14 +50,6 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
             //Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Eroare la AscultatorVeziConcediiAprobate");
         } catch (ClassNotFoundException ex) {
-=======
-            } else {
-                JOptionPane.showMessageDialog(null,"Nu exista concedii!");
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
->>>>>>> parent of 2483a51... manger
             Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
         }
         
