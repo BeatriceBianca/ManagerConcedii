@@ -19,7 +19,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import library.LogCommand;
 import library.model.PanouPrincipal;
-import library.model.PanouPrincipalM;
 import library.model.User;
 
 public class AscultatorButon implements ActionListener
@@ -47,8 +46,9 @@ public class AscultatorButon implements ActionListener
             
             User user = (User) cc.getIn().readObject();
             
-            if( user != null)
+            if( user != null )
             {
+<<<<<<< HEAD
                 if(user.tip == 2)//angajat
                 {
                     PanouPrincipal panou = new PanouPrincipal(user);
@@ -59,6 +59,12 @@ public class AscultatorButon implements ActionListener
                     PanouPrincipalM ppm = new PanouPrincipalM(user);
                     login.dispose();
                 }
+=======
+//                System.out.print("a intrat aici!");
+                //JOptionPane.showMessageDialog(null,"Felicitari : "+user.username+", ai reusit sa te loghezi!");
+                PanouPrincipal panou = new PanouPrincipal(user);
+                login.dispose();
+>>>>>>> parent of 2483a51... manger
             }
             else
             {
