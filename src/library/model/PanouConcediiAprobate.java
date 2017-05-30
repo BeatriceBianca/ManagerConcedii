@@ -39,7 +39,6 @@ public class PanouConcediiAprobate extends JFrame
             else if (list.get(i).stare == -1) 
                 stare = "Refuzat";
             else stare = "In asteptare";
-            //System.out.println(list.get(i).data_start);
             model.addRow(new Object[]{ list.get(i).data_start.substring(0,10), list.get(i).data_sfarsit.substring(0,10), stare});
     }
          

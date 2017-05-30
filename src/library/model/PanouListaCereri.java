@@ -48,8 +48,6 @@ public class PanouListaCereri extends JFrame
         model.addColumn("End date");
         JTable table = new JTable(model);
         
-        System.out.println(list.size());
-        
         for ( int i = 0; i < list.size(); i++ )
             model.addRow(new Object[]{ list.get(i).concediu_id, 
                                        list.get(i).nume,
@@ -57,7 +55,7 @@ public class PanouListaCereri extends JFrame
                                        list.get(i).start.substring(0,10),
                                        list.get(i).end.substring(0,10)
                                     });
-          
+        
         setLayout(new GridBagLayout());
         GridBagConstraints constraints;
         
@@ -114,16 +112,9 @@ public class PanouListaCereri extends JFrame
         constraints.gridy = 3; //pe linia
         this.add(submit, constraints);
         
-        this.setBounds(470, 220, 460, 350);
+        this.setBounds(520, 270, 510, 400);
         this.setMinimumSize(new Dimension(350, 300));
         this.setVisible(true);
-//        
-//        this.addWindowListener(new java.awt.event.WindowAdapter(){
-//            @Override
-//            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-//                //reseteaza lista ?????
-//            }
-//        });
         
         submit.addActionListener(new ActionListener(){
 
@@ -157,6 +148,8 @@ public class PanouListaCereri extends JFrame
                             ConnectionController cc = ConnectionController.getInstance();
                             try {
                                 cc.getOut().writeObject(new SolicitAprobareCommand(id,response));
+                                JOptionPane.showMessageDialog(null,"Solicitare modificata cu succes!");
+                                
                             } catch (IOException ex) {
                                 Logger.getLogger(PanouListaCereri.class.getName()).log(Level.SEVERE, null, ex);
                             }

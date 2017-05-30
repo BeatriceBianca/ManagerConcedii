@@ -49,7 +49,11 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
         String endDateString;
         
         Object lunaStart = luna_start.getSelectedItem();
-        int ziStart = Integer.parseInt(zi_start.getText());
+        
+        int ziStart = 0;
+        if(!zi_start.getText().equals(""))
+            ziStart = Integer.parseInt(zi_start.getText());
+        
         if (lunaStart == "01" || lunaStart == "03" || lunaStart == "05" || lunaStart == "07"
                 || lunaStart == "08" || lunaStart == "10" || lunaStart == "12") {
             if ( ziStart < 1 || ziStart > 31 ) {
@@ -69,7 +73,11 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
         }
         
         Object lunaSfarsit = luna_sfarsit.getSelectedItem();
-        int ziSfarsit = Integer.parseInt(zi_sfarsit.getText());
+        
+        int ziSfarsit = 0;
+        if(!zi_sfarsit.getText().equals(""))
+            ziSfarsit = Integer.parseInt(zi_sfarsit.getText());
+        
         if (lunaSfarsit == "01" || lunaSfarsit == "03" || lunaSfarsit == "05" || lunaSfarsit == "07"
                 || lunaSfarsit == "08" || lunaSfarsit == "10" || lunaSfarsit == "12") {
             if ( ziSfarsit < 1 || ziSfarsit > 31 ) {

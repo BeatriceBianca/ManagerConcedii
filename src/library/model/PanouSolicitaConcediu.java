@@ -36,6 +36,7 @@ public class PanouSolicitaConcediu extends JFrame
         setTitle("Panou solicita concediu");
         setLayout(new GridBagLayout());
         GridBagConstraints constraints=new GridBagConstraints();
+        
         JLabel nume = new JLabel("Nume utilizator: "+user.nume+" "+user.prenume+" ");
         constraints.gridx = 0;
         constraints.gridy = 0;
