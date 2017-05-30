@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import java.util.concurrent.TimeUnit;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import library.SolicitConcediuCommand;
 
@@ -29,15 +30,17 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
     JTextField zi_sfarsit = new JTextField();
     JComboBox luna_sfarsit = new JComboBox();
     User user = new User();
+    JFrame jf ;
  
     public AscultatorButonTrimiteSolicitare(JTextField zi_start, JComboBox luna_start, JTextField zi_sfarsit, 
-                        JComboBox luna_sfarsit, User user)
+                        JComboBox luna_sfarsit, User user,JFrame frame)
     {
         this.zi_start = zi_start;
         this.luna_start = luna_start;
         this.zi_sfarsit = zi_sfarsit;
         this.luna_sfarsit = luna_sfarsit;
         this.user = user;
+        this.jf = frame;
     }
 
     @Override
@@ -107,22 +110,25 @@ public class AscultatorButonTrimiteSolicitare implements ActionListener
             {
                 long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
             
-                ConnectionController cc = ConnectionController.getInstance(); //?
+                ConnectionController cc = ConnectionController.getInstance();
                 cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
                 cc.getOut().flush();
-            } else if ( startDate.equals(endDate) ) {
+            } 
+            else if ( startDate.equals(endDate) ) {
 
                 long diff = TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(),TimeUnit.MILLISECONDS) + 1;
             
-                ConnectionController cc = ConnectionController.getInstance(); //?
+                ConnectionController cc = ConnectionController.getInstance();
                 cc.getOut().writeObject(new SolicitConcediuCommand(user, startDateString, endDateString, diff));
                 cc.getOut().flush();
-            } else {
+                //jf.dispose();
+            }
+            else {
                 
                 JOptionPane.showMessageDialog(null,"Data sfarsit gresita!");
                 return;
             }
-            
+            jf.dispose();
             JOptionPane.showMessageDialog(null,"Solicitarea a fost trimisa!");
             
         } catch (ParseException ex) {

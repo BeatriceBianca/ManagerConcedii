@@ -35,13 +35,13 @@ public class PanouConcediiAprobate extends JFrame
         try
         {
         for ( int i = 0; i < list.size(); i++ ) {
-            String stare;
+            String star;
             if (list.get(i).stare == 1)
-                stare = "Acceptat";
+                star = "Acceptat";
             else if (list.get(i).stare == -1) 
-                stare = "Refuzat";
-            else stare = "In asteptare";
-            model.addRow(new Object[]{ list.get(i).data_start.substring(0,10), list.get(i).data_sfarsit.substring(0,10), stare});
+                star = "Refuzat";
+            else star = "In asteptare";
+            model.addRow(new Object[]{ list.get(i).data_start.substring(0,10), list.get(i).data_sfarsit.substring(0,10), star});
     }
          
         //add the table to the frame
@@ -59,7 +59,7 @@ public class PanouConcediiAprobate extends JFrame
         }
         catch(ClassCastException e)
         {
-            System.out.println("NULL POINTER EXCEPTION IN PCA");
+            System.out.println("Class cast  EXCEPTION IN PCA");
         }
     }
     

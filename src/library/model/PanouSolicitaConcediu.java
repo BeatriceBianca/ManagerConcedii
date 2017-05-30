@@ -110,7 +110,7 @@ public class PanouSolicitaConcediu extends JFrame
         add(buton, constraints);
         
         buton.addActionListener(new AscultatorButonTrimiteSolicitare(zi_start, luna_start,
-                zi_sfarsit, luna_sfarsit, user));
+                zi_sfarsit, luna_sfarsit, user,this));
         
         setVisible(true);
     }

@@ -56,8 +56,8 @@ public class SolicitConcediuCommand extends Command
                     startDate + "', 'dd-mm-yyyy'), to_date(' " + endDate + "','dd-mm-yyyy'), 0 ," + user.id + ")";
             }
  
-            Statement st1 = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
-            st1.executeUpdate(sql);
+            //Statement st1 = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
+            st.executeUpdate(sql);
             rs.close();
             
 

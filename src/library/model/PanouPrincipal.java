@@ -24,8 +24,8 @@ public class PanouPrincipal extends JFrame
         setTitle("Panou principal");
         JLabel nume = new JLabel("Nume utilizator: "+user.nume+" "+user.prenume+" ");
         JLabel zile_concediu = new JLabel ("Zile concediu ramase: "+user.zile_concediu_ramase);
-        super.setBounds(450, 200, 300, 350);
-        super.setMinimumSize(new Dimension(350, 300));
+        setBounds(450, 200, 300, 350);
+        setMinimumSize(new Dimension(350, 300));
 
         setLayout(new GridBagLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,7 +50,7 @@ public class PanouPrincipal extends JFrame
         constraints.ipadx = 30;  //dimensiune
         constraints.ipady = 20;  //dimensiune
         constraints.insets = new Insets(10, 0, 5, 0);
-        super.add(buton1, constraints);
+        add(buton1, constraints);
         
         JButton buton2 = new JButton("Vezi concedii!");
         constraints.gridx = 0; // pe coloana 
@@ -58,7 +58,7 @@ public class PanouPrincipal extends JFrame
         constraints.ipadx = 30;  //dimensiune
         constraints.ipady = 20;  //dimensiune
         constraints.insets = new Insets(10, 0, 5, 0);
-        super.add(buton2, constraints);
+        add(buton2, constraints);
         
         buton1.addActionListener(new AscultatorSolicitaConcediu(user));
         buton2.addActionListener(new AscultatorVeziConcediiAprobate(user));
