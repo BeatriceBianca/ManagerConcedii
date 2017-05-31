@@ -25,9 +25,10 @@ public class SolicitAprobareCommand extends Command
     {
         Statement st = DBcontroller.getI().getSt();
         String sql;
+        ResultSet rs=null;
         sql = "select start_date, end_date, angajat_id from concedii where concediu_id = " + id; 
         try {
-            ResultSet rs = st.executeQuery(sql);
+             rs = st.executeQuery(sql);
             if (rs.next()) {
                 Date startDate = rs.getDate("start_date");
                 Date endDate = rs.getDate("end_date");
@@ -42,6 +43,15 @@ public class SolicitAprobareCommand extends Command
         } catch (SQLException ex) {
             Logger.getLogger(SolicitAprobareCommand.class.getName()).log(Level.SEVERE, null, ex);
         } 
+        finally
+        {
+            if(rs!=null)
+                try {
+                    rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitAprobareCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
         sql = "update CONCEDII set stare = " + response + " where concediu_id = " + id; 
         try 
@@ -52,6 +62,7 @@ public class SolicitAprobareCommand extends Command
         {
             Logger.getLogger(SolicitAprobareCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return null;
     }
 }

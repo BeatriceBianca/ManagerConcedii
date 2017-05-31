@@ -27,13 +27,14 @@ public class SolicitListaCereri extends Command
     @Override
     public Object execute()
     {
+        ResultSet rs = null;
         try
         {
             String sql = "select * from concedii c , angajat a  where c.angajat_id = a.angajat_id "
                     + "and a.angajat_id is not null and manager_id is not null and stare=0";
             //in sql iau o lista de concedii care asteapta sa fie aprobate/refuzate dar trb sa am si nume/prenume din tabela angajat
             Statement st = DBcontroller.getI().getSt();
-            ResultSet rs = st.executeQuery(sql);
+            rs = st.executeQuery(sql);
             ArrayList<Cerere> lista_cereri = new ArrayList<>();
             while(rs.next())
             {
@@ -52,6 +53,15 @@ public class SolicitListaCereri extends Command
         catch(SQLException ex)
         {
             Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);   
+        }
+        finally
+        {
+            if(rs!=null)
+                try {
+                    rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitAprobareCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return null;
     }

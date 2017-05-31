@@ -23,7 +23,8 @@ public class ProjectPAO
         ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
         oos.flush();
         ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
-        
+        oos.close();
+        ois.close();
         frame.setVisible(true);
     }
 

@@ -33,13 +33,14 @@ public class SolicitConcediuCommand extends Command
     @Override
     public Object execute()
     {
+        ResultSet rs=null;
         try 
         {
             String sql;
             Statement st = DBcontroller.getI().getSt();                
                 
             sql = "select tip from angajat where angajat_id = " + user.id;
-            ResultSet rs = st.executeQuery(sql);
+             rs = st.executeQuery(sql);
             rs.next();
             int tip = rs.getInt("tip");
             
@@ -62,6 +63,15 @@ public class SolicitConcediuCommand extends Command
         catch (SQLException ex) 
         {
             Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if(rs!=null)
+                try {
+                    rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitAprobareCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return null;
     }

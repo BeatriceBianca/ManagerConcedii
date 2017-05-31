@@ -28,10 +28,11 @@ public class LogCommand extends Command {
 
     @Override
     public Object execute() {
+        ResultSet rs = null;
         try {
             String sql = "select * from ANGAJAT where USERNAME='" + this.username + "' and PAROLA='" + this.password + "'";
             Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
-            ResultSet rs = st.executeQuery(sql);
+            rs = st.executeQuery(sql);
 
             User res = new User();
 
@@ -48,9 +49,21 @@ public class LogCommand extends Command {
             }
             rs.close();
 
-        } catch (SQLException ex) {
+        } catch (SQLException ex) 
+        {
+            
             Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
+        finally
+        {
+            if(rs!=null)
+                try {
+                    rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
         return null;
     }
 }

@@ -33,6 +33,7 @@ public class DBconnection
         } catch (SQLException ex) {
             Logger.getLogger(DBconnection.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return connection;
     }
     
