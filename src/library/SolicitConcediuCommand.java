@@ -36,9 +36,7 @@ public class SolicitConcediuCommand extends Command
         try 
         {
             String sql;
-            sql = "update ANGAJAT set zile_concediu_ramase = zile_concediu_ramase - " + diff + " where USERNAME='" + user.username + "'";
-            Statement st = DBcontroller.getI().getSt(); 
-            st.executeUpdate(sql);                
+            Statement st = DBcontroller.getI().getSt();                
                 
             sql = "select tip from angajat where angajat_id = " + user.id;
             ResultSet rs = st.executeQuery(sql);

@@ -149,6 +149,7 @@ public class PanouListaCereri extends JFrame
                             try {
                                 cc.getOut().writeObject(new SolicitAprobareCommand(id,response));
                                 JOptionPane.showMessageDialog(null,"Solicitare modificata cu succes!");
+                                cod_concediu.setText("");
                                 
                             } catch (IOException ex) {
                                 Logger.getLogger(PanouListaCereri.class.getName()).log(Level.SEVERE, null, ex);
