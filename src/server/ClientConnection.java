@@ -8,7 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import library.Command;
 
-public class ClientConnection implements Runnable {
+public class ClientConnection implements Runnable 
+{
 
     private final Socket socket;
     private ObjectInputStream in;
@@ -16,19 +17,24 @@ public class ClientConnection implements Runnable {
 
     public ClientConnection(Socket socket) {
         this.socket = socket;
-        try {
+        try 
+        {
             this.in = new ObjectInputStream(socket.getInputStream());
             this.out = new ObjectOutputStream(socket.getOutputStream());
             out.flush();
-        } catch (IOException ex) {
+        } 
+        catch (IOException ex) 
+        {
             Logger.getLogger(ClientConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public void run() {
+    public void run() 
+    {
         try {
-            while (true) {
+            while (true) 
+            {
                 Command c = (Command) this.in.readObject();
                 Object result = c.execute();
                 this.out.writeObject(result);
@@ -36,12 +42,14 @@ public class ClientConnection implements Runnable {
             }
         } catch (IOException | ClassNotFoundException ex) 
         {
-            //Logger.getLogger(ClientConnection.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("eroare CC");
+            
         }
         finally {
             try {
                 this.socket.close();
+                this.out.close();
+                this.in.close();
+                
             } catch (IOException e) {
             }
         }

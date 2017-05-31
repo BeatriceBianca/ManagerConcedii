@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package library.model;
 
 import java.awt.Dimension;
@@ -15,17 +11,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Bogdan-Andrei
- */
+
 public class PanouConcediiAprobate extends JFrame
 {
-    //List<Concediu> list;
+    List<Concediu> list;
     
     public PanouConcediiAprobate(ArrayList<Concediu> list)
     {
-        //this.list = list;
+        this.list = list;
         
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Start date");
@@ -55,11 +48,11 @@ public class PanouConcediiAprobate extends JFrame
         }
         catch(NullPointerException e )
         {
-            System.out.println("NULL POINTER EXCEPTION IN PCA");
+            
         }
         catch(ClassCastException e)
         {
-            System.out.println("Class cast  EXCEPTION IN PCA");
+            
         }
     }
     

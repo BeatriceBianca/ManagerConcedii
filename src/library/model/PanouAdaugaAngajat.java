@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package library.model;
 
 import java.awt.Dimension;
@@ -25,15 +21,14 @@ import library.SolicitConcediuCommand;
 import projectpao.AscultatorSeteazaConcediu;
 import projectpao.ConnectionController;
 
-/**
- *
- * @author Beatrice Bianca
- */
-public class PanouAdaugaAngajat extends JFrame{
+
+public class PanouAdaugaAngajat extends JFrame
+{
     
     User user;
     
-    public PanouAdaugaAngajat(User user){
+    public PanouAdaugaAngajat(User user)
+    {
         this.user = user;
         
         super.setBounds(480, 230, 300, 350);
@@ -103,14 +98,15 @@ public class PanouAdaugaAngajat extends JFrame{
         constraints.gridx = 0;
         constraints.gridy = 4;
         constraints.gridwidth = 2;
-        constraints.ipadx = 25;  //dimensiune
+        constraints.ipadx = 25;  
         constraints.ipady = 10;
         constraints.insets = new Insets(10, 0, 5, 0);
         super.add(adauga,constraints);//ultima linie in pp este 3, deci incep de la gridy =4;
         adauga.addActionListener(new ActionListener(){
             
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) 
+            {
                     
                     if (nume_ang.getText().equals("")){
                         JOptionPane.showMessageDialog(null,"Nu ai setat numele!");
@@ -132,15 +128,18 @@ public class PanouAdaugaAngajat extends JFrame{
                         return;
                     }
                     
-                    ConnectionController cc = ConnectionController.getInstance(); //?
-                try {
+                    ConnectionController cc = ConnectionController.getInstance();
+                try 
+                {
                     cc.getOut().writeObject(new SolicitAdaugareAngajatCommand(nume_ang.getText(), prenume_ang.getText(), username_ang.getText(), parola_ang.getText(), user.id));
                     nume_ang.setText("");
                     prenume_ang.setText("");
                     username_ang.setText("");
                     parola_ang.setText("");
                     JOptionPane.showMessageDialog(null,"Angajat adaugat cu succes!");
-                } catch (IOException ex) {
+                } 
+                catch (IOException ex) 
+                {
                     Logger.getLogger(PanouAdaugaAngajat.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 }

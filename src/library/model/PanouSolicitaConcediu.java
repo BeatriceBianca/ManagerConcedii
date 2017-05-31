@@ -14,8 +14,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import projectpao.AscultatorButon;
 import projectpao.AscultatorButonTrimiteSolicitare;
 
 public class PanouSolicitaConcediu extends JFrame
@@ -31,8 +29,8 @@ public class PanouSolicitaConcediu extends JFrame
     public PanouSolicitaConcediu(User user)
     {
         this.user = user;
-        super.setBounds(480, 230, 300, 350);
-        super.setMinimumSize(new Dimension(350, 300));
+        setBounds(480, 230, 300, 350);
+        setMinimumSize(new Dimension(350, 300));
         setTitle("Panou solicita concediu");
         setLayout(new GridBagLayout());
         GridBagConstraints constraints=new GridBagConstraints();
@@ -50,14 +48,14 @@ public class PanouSolicitaConcediu extends JFrame
         constraints.gridy = 1; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
         constraints.ipadx = 40;
-        constraints.ipadx = 40; //il incadrez intr un patrat
-        super.add(w[0], constraints); //adaug componenta
+        constraints.ipadx = 40; 
+        super.add(w[0], constraints); 
         //configurez textfiled
         constraints = new GridBagConstraints();
         constraints.gridx = 1; // pe coloana 
         constraints.gridy = 1; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 0.1; //ocupa tot, 100%
+        constraints.weightx = 0.1; 
         super.add(zi_start, constraints);
         
         
@@ -68,7 +66,7 @@ public class PanouSolicitaConcediu extends JFrame
         constraints.gridx = 2; // pe coloana 
         constraints.gridy = 1; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 0.1; //ocupa tot, 100%
+        constraints.weightx = 0.1; 
         super.add(luna_start, constraints);
        
         
@@ -78,14 +76,14 @@ public class PanouSolicitaConcediu extends JFrame
         constraints.gridy = 2; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
         constraints.ipadx = 40;
-        constraints.ipadx = 40; //il incadrez intr un patrat
-        super.add(w[1], constraints); //adaug componenta
+        constraints.ipadx = 40; 
+        super.add(w[1], constraints); 
         //configurez textfiled 
         constraints = new GridBagConstraints();
         constraints.gridx = 1; // pe coloana 
         constraints.gridy = 2; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 0.1; //ocupa tot, 100%
+        constraints.weightx = 0.1;
         super.add(zi_sfarsit, constraints);
      
         
@@ -94,8 +92,8 @@ public class PanouSolicitaConcediu extends JFrame
         constraints.gridx = 2; // pe coloana 
         constraints.gridy = 2; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 0.1; //ocupa tot, 100%
-        super.add(luna_sfarsit, constraints); //adaug componenta
+        constraints.weightx = 0.1;
+        super.add(luna_sfarsit, constraints);
         
         
         JButton buton = new JButton("Trimite");
@@ -104,8 +102,8 @@ public class PanouSolicitaConcediu extends JFrame
         constraints.gridy = 9; //pe linia 
         constraints.gridwidth = 2;
         constraints.gridheight = 2;
-        constraints.ipadx = 40;  //dimensiune
-        constraints.ipady = 20;  //dimensiune
+        constraints.ipadx = 40;  
+        constraints.ipady = 20;  
         constraints.insets = new Insets(40, 0, 0, 0);  //top padding
         add(buton, constraints);
         

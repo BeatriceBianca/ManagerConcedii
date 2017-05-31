@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projectpao;
 
 import java.awt.event.ActionEvent;
@@ -18,10 +14,6 @@ import library.model.Cerere;
 import library.model.PanouListaCereri;
 import library.model.User;
 
-/**
- *
- * @author Bogdan-Andrei
- */
 public class AscultatorSeteazaConcediu implements ActionListener
 {
     User user;
@@ -52,11 +44,11 @@ public class AscultatorSeteazaConcediu implements ActionListener
         }
         catch(NullPointerException ef)
         {
-            System.out.println("Alt nullpointer");
+            
         }
         catch(IOException e)
         {
-            System.out.println("Eroare la: ascultator seteaza concediu");
+            
         } 
         catch (ClassNotFoundException ex) 
         {

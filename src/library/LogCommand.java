@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package library;
 
 import java.sql.ResultSet;
@@ -47,7 +43,6 @@ public class LogCommand extends Command {
                 res.prenume = rs.getString("PRENUME");
                 res.id = rs.getInt("ANGAJAT_ID");
                 res.tip = rs.getInt("TIP");
-                //System.out.print(res.tip);
                 rs.close();
                 return res;
             }

@@ -9,17 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import library.model.Cerere;
 import library.model.User;
 import server.DBcontroller;
 
-/**
- *
- * @author Bogdan-Andrei
- */
+
 public class SolicitListaCereri extends Command
 {
     User user;
@@ -36,7 +32,7 @@ public class SolicitListaCereri extends Command
             String sql = "select * from concedii c , angajat a  where c.angajat_id = a.angajat_id "
                     + "and a.angajat_id is not null and manager_id is not null and stare=0";
             //in sql iau o lista de concedii care asteapta sa fie aprobate/refuzate dar trb sa am si nume/prenume din tabela angajat
-            Statement st = DBcontroller.getI().getSt(); //cand vreau sa fac rost de statement
+            Statement st = DBcontroller.getI().getSt();
             ResultSet rs = st.executeQuery(sql);
             ArrayList<Cerere> lista_cereri = new ArrayList<>();
             while(rs.next())

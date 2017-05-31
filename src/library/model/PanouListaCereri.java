@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package library.model;
 
 import java.awt.BorderLayout;
@@ -23,12 +19,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import library.SolicitAprobareCommand;
-import projectpao.AscultatorButonTrimiteSolicitare;
 import projectpao.ConnectionController;
 
 
@@ -75,7 +69,7 @@ public class PanouListaCereri extends JFrame
         constraints.gridy = 1; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
         constraints.ipadx = 40;
-        constraints.ipadx = 40; //il incadrez intr un patrat
+        constraints.ipadx = 40; 
         constraints.insets = new Insets(10, 0, 5, 0);
         this.add(cod, constraints);
         
@@ -83,7 +77,7 @@ public class PanouListaCereri extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 1; // pe coloana 
         constraints.gridy = 1; //pe linia 
-        constraints.ipadx = 35;  //dimensiune
+        constraints.ipadx = 35; 
         constraints.insets = new Insets(10, 0, 5, 0);
         add(cod_concediu, constraints);
         
@@ -119,10 +113,12 @@ public class PanouListaCereri extends JFrame
         this.setMinimumSize(new Dimension(350, 300));
         this.setVisible(true);
         
-        submit.addActionListener(new ActionListener(){
+        submit.addActionListener(new ActionListener()
+        {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) 
+            {
                 String cod_con = cod_concediu.getText();
                 int response = 1;
                 if (acceptButton.isSelected())
@@ -132,11 +128,12 @@ public class PanouListaCereri extends JFrame
                 
                 if (cod_con.equals("")){
                     JOptionPane.showMessageDialog(null,"Nu ai ales id-ul concediului!");
-                    return;
+                    //return;
                 } else {
-                    try {
+                    try 
+                    {
                         int id = Integer.parseInt(cod_con);
-                        System.out.println("ascultator");
+                        
                         boolean existaCerere = false;
                         for (Cerere c: list) {
                             if (c.concediu_id == id){
@@ -159,7 +156,7 @@ public class PanouListaCereri extends JFrame
                         }
                     } catch(Exception ex) {
                         JOptionPane.showMessageDialog(null,"Format id gresit!");
-                        return;
+                        //return;
                     }
                 }
             }
@@ -169,7 +166,7 @@ public class PanouListaCereri extends JFrame
         }
         catch(ClassCastException e)
         {
-            System.out.println("Eroare stupida");
+            
         }
     }
     

@@ -1,25 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package library;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import library.model.Concediu;
 import library.model.User;
 import server.DBcontroller;
 
-/**
- *
- * @author Bogdan-Andrei
- */
 public class SolicitListaConcediiAprobate extends Command
 {
     User user;
@@ -54,9 +43,8 @@ public class SolicitListaConcediiAprobate extends Command
         } 
         catch (SQLException ex) 
         {
-            //Logger.getLogger(LogCommand.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Eroare la: SolicitListaConcediiAprobateCommand");
         }
-        return null;
+        return 0;
     }
 }

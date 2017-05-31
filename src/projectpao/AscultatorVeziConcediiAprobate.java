@@ -30,11 +30,10 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
     @Override
     public void actionPerformed(ActionEvent ae) 
     {  
-        //to do
         
         try
         {
-            ConnectionController cc = ConnectionController.getInstance(); //?
+            ConnectionController cc = ConnectionController.getInstance(); 
             cc.getOut().writeObject(new SolicitListaConcediiAprobate(this.user));
             cc.getOut().flush();
             ArrayList<Concediu> lista = (ArrayList<Concediu>) cc.getIn().readObject();
@@ -47,9 +46,9 @@ public class AscultatorVeziConcediiAprobate implements ActionListener
         } 
         catch ( IOException ex ) 
         {
-            //Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Eroare la AscultatorVeziConcediiAprobate");
-        } catch (ClassNotFoundException ex) {
+            
+        } catch (ClassNotFoundException ex) 
+        {
             Logger.getLogger(AscultatorVeziConcediiAprobate.class.getName()).log(Level.SEVERE, null, ex);
         }
         

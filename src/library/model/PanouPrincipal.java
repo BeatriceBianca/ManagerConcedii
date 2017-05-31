@@ -8,8 +8,6 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import projectpao.AscultatorButon;
 import projectpao.AscultatorSolicitaConcediu;
 import projectpao.AscultatorVeziConcediiAprobate;
 
@@ -35,28 +33,28 @@ public class PanouPrincipal extends JFrame
         constraints.gridx = 0; // pe coloana 
         constraints.gridy = 0; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        add(nume, constraints); //adaug componenta
+        add(nume, constraints); 
         
         constraints = new GridBagConstraints();
         constraints.gridx = 0; // pe coloana 
         constraints.gridy = 1; //pe linia 
         constraints.fill = GridBagConstraints.BOTH;
-        add(zile_concediu, constraints); //adaug componenta
+        add(zile_concediu, constraints); 
 
         
         JButton buton1 = new JButton("Solicita concediu!");
         constraints.gridx = 0; // pe coloana 
         constraints.gridy = 2; //pe linia 
-        constraints.ipadx = 30;  //dimensiune
-        constraints.ipady = 20;  //dimensiune
+        constraints.ipadx = 30;  
+        constraints.ipady = 20; 
         constraints.insets = new Insets(10, 0, 5, 0);
         add(buton1, constraints);
         
         JButton buton2 = new JButton("Vezi concedii!");
         constraints.gridx = 0; // pe coloana 
         constraints.gridy = 3; //pe linia 
-        constraints.ipadx = 30;  //dimensiune
-        constraints.ipady = 20;  //dimensiune
+        constraints.ipadx = 30; 
+        constraints.ipady = 20;  
         constraints.insets = new Insets(10, 0, 5, 0);
         add(buton2, constraints);
         

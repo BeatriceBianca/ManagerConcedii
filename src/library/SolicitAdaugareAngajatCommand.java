@@ -12,10 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import server.DBcontroller;
 
-/**
- *
- * @author Beatrice Bianca
- */
+
 public class SolicitAdaugareAngajatCommand extends Command{
     
     String nume, prenume, username, parola;
@@ -32,16 +29,18 @@ public class SolicitAdaugareAngajatCommand extends Command{
     @Override
     public Object execute()
     {   
-        //Statement st = null;
-        try {
+        try 
+        {
             Statement st = DBcontroller.getI().getSt();
         
             String sql = "Insert into Angajat (nume, prenume, username, parola, manager_id, zile_concediu_ramase, tip) values" +
                 "('" + nume + "','" + prenume + "','" + username + "','" + parola + "'," + manager_id + ",23,2)";
         
-            System.out.println(sql);
+            
             st.executeUpdate(sql);
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex)
+        {
             Logger.getLogger(SolicitAdaugareAngajatCommand.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return null;
